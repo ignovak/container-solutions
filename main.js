@@ -15,7 +15,6 @@ main.append('text')
 
 d3.json('data.json', function (error, data) {
     render(data);
-    window.data = data
   });
 
 function render (data) {
@@ -67,6 +66,20 @@ function render (data) {
         var offset = agentRadius * 3 + (i % 2 ? -40 : 0)
         return edgeRadius * Math.sin(angleOffset + angleDelta * i) + offset
       })
+
+  simulation = d3.forceSimulation(data)
+    // .force('collide', d3.forceCollide(20))
+    .force('charge', d3.forceManyBody())
+    .force('center', d3.forceCenter(300, 300))
+    // .force('link', d3.forceLink(links).distance(20).strength(1))
+    // .force('x', d3.forceX())
+    // .force('y', d3.forceY())
+    .on('tick', function() {
+      return
+      agents.selectAll('circle')
+        .attr('cx', _ => _.x)
+        .attr('cy', _ => _.y)
+    })
 
 }
 
