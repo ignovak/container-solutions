@@ -4,14 +4,6 @@
   outline: 1px solid;
 }
 
-g {
-  stroke-width: 1px;
-}
-
-g:hover {
-  stroke-width: 2px;
-}
-
 line {
   stroke: #0af;
 }
@@ -19,4 +11,34 @@ line {
 circle {
   stroke: #0af;
   fill: #fff;
+}
+
+text {
+  text-transform: uppercase;
+  font-family: arial;
+}
+
+.master text {
+  fill: #8ce;
+}
+
+.master circle {
+  fill: #cef;
+}
+
+.node {
+  stroke-width: 1px;
+}
+
+.node text {
+  font-size: 9px;
+  display: none;
+}
+
+.node:hover {
+  stroke-width: 2px;
+}
+
+.node:hover text {
+  display: block;
 }
