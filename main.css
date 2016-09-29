@@ -28,6 +28,7 @@ text {
 
 .node {
   stroke-width: 1px;
+  cursor: pointer;
 }
 
 .node text {
@@ -35,10 +36,8 @@ text {
   display: none;
 }
 
-.node:hover {
-  stroke-width: 2px;
-}
-
-.node:hover text {
+.node:hover text,
+.node.selected text
+{
   display: block;
 }

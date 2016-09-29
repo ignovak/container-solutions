@@ -61,19 +61,26 @@ function render (data) {
     .enter()
     .append('g')
     .attr('class', 'node')
-
-  var agents = nodes
-    .append('g')
+    .on('click', function (data, index, selection) {
+      var _this = d3.select(this)
+      _this.classed('selected', !_this.classed('selected'))
+    })
     .on('mouseenter', function () {
       d3.select(this)
+        .select('g')
         .transition()
         .attr('transform', 'scale(2)')
     })
     .on('mouseleave', function () {
-      d3.select(this)
-        .transition()
-        .attr('transform', 'scale(1)')
+      var _this = d3.select(this)
+      if (!_this.classed('selected'))
+        _this
+          .select('g')
+          .transition()
+          .attr('transform', 'scale(1)')
     })
+
+  var agents = nodes.append('g')
 
   agents.append('circle')
       .attr('r', config.agentRadius)
