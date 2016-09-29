@@ -20,7 +20,7 @@ d3.json('data.json', function (error, data) {
 function render (data) {
 
   var links = main.selectAll('line')
-    .data(data.slice(1).map((_, i) => ({ source: data[0], target: data[i + 1] })))
+    .data(data)
     .enter()
     .append('line')
     .attr('stroke', '#0af')
@@ -41,13 +41,15 @@ function render (data) {
       d3.select(this)
         .select('circle')
         .transition()
-        .attr('r', agentRadius * 2);
+        .attr('r', agentRadius * 2)
+        .attr('stroke-width', 2);
     })
     .on('mouseleave', function () {
       d3.select(this)
         .select('circle')
         .transition()
-        .attr('r', agentRadius);
+        .attr('r', agentRadius)
+        .attr('stroke-width', 1);
     })
 
   agents
@@ -61,20 +63,20 @@ function render (data) {
     .text(_ => _.name)
       .attr('text-anchor', 'middle')
 
-  var simulation = d3.forceSimulation(data)
-    // .force('collide', d3.forceCollide(50))
-    .force('charge', d3.forceManyBody())
-    .force('center', d3.forceCenter(300, 300))
-    .force('link', d3.forceLink(links).distance(150).strength(0.1))
-    // .force('x', d3.forceX())
-    // .force('y', d3.forceY())
+  simulation = d3.forceSimulation(data)
+    .force('collide', d3.forceCollide(40))
+    // .force('charge', d3.forceManyBody())
+    .force('center', d3.forceCenter(250, 500))
+    // .force('link', d3.forceLink(links).distance(150).strength(0.1))
+    .force('x', d3.forceX().strength(0.05))
+    .force('y', d3.forceY().strength(0.2))
     .on('tick', function() {
       agents.attr('transform', _ => `translate(${_.x}, ${_.y})`)
       links
-        .attr('x1', _ => _.source.x)
-        .attr('y1', _ => _.source.y)
-        .attr('x2', _ => _.target.x)
-        .attr('y2', _ => _.target.y)
+        .attr('x1', 350)
+        .attr('y1', 250)
+        .attr('x2', _ => _.x)
+        .attr('y2', _ => _.y)
     })
 
 }
