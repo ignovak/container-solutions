@@ -1,0 +1,22 @@
+#main svg {
+  width: 600px;
+  height: 600px;
+  outline: 1px solid;
+}
+
+g {
+  stroke-width: 1px;
+}
+
+g:hover {
+  stroke-width: 2px;
+}
+
+line {
+  stroke: #0af;
+}
+
+circle {
+  stroke: #0af;
+  fill: #fff;
+}
