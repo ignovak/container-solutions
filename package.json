@@ -1,0 +1,16 @@
+{
+  "name": "container_solutions",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "d3": "^4.2.6",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  }
+}

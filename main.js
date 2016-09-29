@@ -1,3 +1,6 @@
+var d3 = require('d3')
+var renderMasterNode = require('./master-node')
+
 var config = {
   agentRadius: 30,
   master: {
@@ -9,31 +12,8 @@ var config = {
 
 var svg = d3.select('#main svg')
 
-function renderMasterNode () {
-  var arc = d3.arc()
-      .innerRadius(config.master.r)
-      .outerRadius(config.master.r * 1.1)
-      .startAngle(3 / 2 * Math.PI)
-      .endAngle(10);
+renderMasterNode(config, svg)
 
-  var g = svg.append('g')
-      .attr('class', 'master')
-      .attr('transform', `translate(${config.master.x}, ${config.master.y})`)
-
-  g.append('circle')
-      .attr('r', config.master.r)
-      .attr('fill', '#69c')
-
-  g.append('defs').append('path')
-      .attr('id', 'master-text-path')
-      .attr('d', arc());
-
-  g.append('text').append('textPath')
-      .attr('xlink:href', '#master-text-path')
-      .text('Mesos master');
-}
-
-renderMasterNode()
 
 var arc = d3.arc()
   .innerRadius(config.agentRadius)
