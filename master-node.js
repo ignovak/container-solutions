@@ -75,20 +75,32 @@ function renderFramework (framework, index, params) {
       .startAngle(startAngle)
       .endAngle(endAngle)
 
-  var id = 'framework-text-path-' + framework;
+  var id = 'framework-text-path-' + framework.name;
 
   svg.append('path')
-      .style('fill', '#cdeaf6')
-      .attr('d', bg);
+      .attr('d', bg)
+      .on('mouseenter', function () {
+        d3.select(this).attr('style', 'fill: ' + framework.color)
+      })
+      .on('mouseleave', function () {
+        d3.select(this).attr('style', '')
+      })
 
   svg.append('defs').append('path')
       .attr('id', id)
-      .attr('d', arc);
+      .attr('d', arc)
 
   svg.append('text').append('textPath')
       .attr('xlink:href', '#' + id)
-      .text(framework)
+      .text(framework.name)
       .attr('startOffset', function() {
         return (bgWidth - this.getComputedTextLength()) / 2
       })
+      .on('mouseenter', function () {
+        d3.select(this).attr('style', 'fill: #fff')
+      })
+      .on('mouseleave', function () {
+        d3.select(this).attr('style', '')
+      })
+
 }

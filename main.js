@@ -1,6 +1,8 @@
 var d3 = require('d3')
 var renderCore = require('./master-node')
 
+require('./main.css')
+
 var config = {
   agentRadius: 30,
   master: {
@@ -8,7 +10,15 @@ var config = {
     y: 200,
     r: 75
   },
-  frameworks: ['K', 'SP', 'FR6', 'FR7', 'ES', 'LS', 'FL']
+  frameworks: [
+    { name: 'K', color: '' },
+    { name: 'SP', color: '#f1751c' },
+    { name: 'FR6', color: '' },
+    { name: 'FR7', color: '' },
+    { name: 'ES', color: '#8cc341' },
+    { name: 'LS', color: '#5f1e5b' },
+    { name: 'FL', color: '#db3000' }
+  ]
 }
 
 var svg = d3.select('#main svg')
