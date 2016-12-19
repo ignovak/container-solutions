@@ -1,5 +1,5 @@
 var d3 = require('d3')
-var renderMasterNode = require('./master-node')
+var renderCore = require('./master-node')
 
 var config = {
   agentRadius: 30,
@@ -7,12 +7,13 @@ var config = {
     x: 400,
     y: 200,
     r: 75
-  }
+  },
+  frameworks: ['K', 'SP', 'FR6', 'FR7', 'ES', 'LS', 'FL']
 }
 
 var svg = d3.select('#main svg')
 
-renderMasterNode(config, svg)
+renderCore(config, svg)
 
 
 var arc = d3.arc()

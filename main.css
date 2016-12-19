@@ -2,14 +2,15 @@
   width: 600px;
   height: 600px;
   outline: 1px solid;
+  font-weight: bold;
 }
 
 line {
-  stroke: #0af;
+  stroke: #c2e6f4;
 }
 
 circle {
-  stroke: #0af;
+  stroke: #c2e6f4;
   fill: #fff;
 }
 
@@ -19,11 +20,11 @@ text {
 }
 
 .master text {
-  fill: #8ce;
+  fill: #44b0dd;
 }
 
 .master circle {
-  fill: #cef;
+  fill: #cdeaf6;
 }
 
 .node {
