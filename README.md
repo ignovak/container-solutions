@@ -1,6 +1,7 @@
 TODO
 
-  - implement framework hovering
+- improve framework hovering
+- add framework stripes
   - implement framework selection
 - fix colors
 - implement "big bubble"
@@ -9,6 +10,7 @@ TODO
 
 DONE
 - implement frameworks
+- implement framework hovering
 
 npm i
 webpack-dev-server --inline --hot
